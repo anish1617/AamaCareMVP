@@ -31,9 +31,9 @@ public class PregnancyRepository : IGenericRepository<Pregnancy>
         return await _context.Set<Pregnancy>().ToListAsync();
     }
 
-    public async Task<Pregnancy?> GetByIdAsync(Guid id)
+    public async Task<Pregnancy> GetByIdAsync(Guid id)
     {
-        return await _context.Set<Pregnancy>().FindAsync(id);
+        return await _context.Set<Pregnancy>().FindAsync(id) ?? throw new KeyNotFoundException("Pregnancy not found");
     }
 
     public async Task UpdateAsync(Pregnancy entity)
