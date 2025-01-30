@@ -18,4 +18,13 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AamaCare.Application\AamaCare.Application.csproj" />
+    <ProjectReference Include="..\AamaCare.Domain\AamaCare.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\Repositories\" />
+  </ItemGroup>
+
 </Project>
