@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Shared\Validation\" />
+    <Folder Include="Shared\Validation\" />
   </ItemGroup>
 
 </Project>

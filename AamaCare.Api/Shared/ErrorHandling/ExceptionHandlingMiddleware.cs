@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace AamaCare.Api.Features.Shared.ErrorHandling;
+namespace AamaCare.Api.Shared.ErrorHandling;
 
 public class ExceptionHandlingMiddleware : IMiddleware
 {
@@ -24,7 +24,7 @@ public class ExceptionHandlingMiddleware : IMiddleware
             _logger.LogError(e, e.Message);
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var response = new 
+            var response = new
             {
                 Error = "An unexpected error has occured",
                 Details = e.Message
