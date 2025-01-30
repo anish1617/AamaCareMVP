@@ -1,0 +1,6 @@
+@AamaCare.Api_HostAddress = http://localhost:5003
+
+GET {{AamaCare.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
