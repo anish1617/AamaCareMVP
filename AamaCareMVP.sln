@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7559644F-765
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AamaCare.Api", "AamaCare.Api\AamaCare.Api.csproj", "{41E686F6-DE07-443D-BC31-4AF9B9400A80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AamaCare.Application", "AamaCare.Application\AamaCare.Application.csproj", "{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{41E686F6-DE07-443D-BC31-4AF9B9400A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E686F6-DE07-443D-BC31-4AF9B9400A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E686F6-DE07-443D-BC31-4AF9B9400A80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41E686F6-DE07-443D-BC31-4AF9B9400A80} = {7559644F-7650-4192-9A1D-8AEE37F77421}
+		{CE3C0EF0-F7EE-4BDD-A2DC-0D7A35017ED7} = {7559644F-7650-4192-9A1D-8AEE37F77421}
 	EndGlobalSection
 EndGlobal
