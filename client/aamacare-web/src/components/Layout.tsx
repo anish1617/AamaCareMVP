@@ -1,5 +1,5 @@
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useTheme } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button"
@@ -11,12 +11,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { Moon, Sun, Laptop, Menu, Home, Baby, Heart, Users, Bell, User } from "lucide-react"
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { setTheme, theme } = useTheme()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const sidebarItems = [
     { icon: Home, label: "Dashboard", path: "/" },
@@ -26,18 +31,22 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { icon: Bell, label: "Notifications", path: "/notifications" },
   ]
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className="flex h-screen bg-background text-foreground">
       {/* Sidebar */}
       <aside
         className={`${
           sidebarCollapsed ? "w-16" : "w-64"
-        } transition-all duration-300 ease-in-out bg-card text-card-foreground p-4`}
+        } transition-all duration-300 ease-in-out bg-card text-card-foreground p-4 border-r border-border`}
       >
         <div className="flex justify-between items-center mb-8">
           <h1 className={`text-xl font-bold ${sidebarCollapsed ? "hidden" : "block"}`}>MomCare</h1>
           <Button variant="ghost" size="icon" onClick={() => setSidebarCollapsed(!sidebarCollapsed)}>
-            <Menu />
+            <Menu className="h-[1.2rem] w-[1.2rem]" />
           </Button>
         </div>
         <nav>
@@ -60,7 +69,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top navigation */}
-        <header className="bg-background border-b p-4 flex justify-between items-center">
+        <header className="bg-background border-b border-border p-4 flex justify-between items-center">
           <h2 className="text-2xl font-semibold">Dashboard</h2>
           <div className="flex items-center space-x-4">
             <DropdownMenu>
