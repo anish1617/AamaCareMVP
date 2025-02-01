@@ -1,9 +1,9 @@
 import type React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useTheme } from "./theme-provider"
-import { Button } from "./ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { useTheme } from "@/components/theme-provider"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
-import { Moon, Sun, Menu, Home, Baby, Heart, Users, Bell, User } from "lucide-react"
+import { Moon, Sun, Laptop, Menu, Home, Baby, Heart, Users, Bell, User } from "lucide-react"
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { setTheme, theme } = useTheme()
@@ -32,7 +32,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <aside
         className={`${
           sidebarCollapsed ? "w-16" : "w-64"
-        } transition-all duration-300 ease-in-out bg-primary text-primary-foreground p-4`}
+        } transition-all duration-300 ease-in-out bg-card text-card-foreground p-4`}
       >
         <div className="flex justify-between items-center mb-8">
           <h1 className={`text-xl font-bold ${sidebarCollapsed ? "hidden" : "block"}`}>MomCare</h1>
@@ -46,7 +46,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className="flex items-center p-2 rounded-lg hover:bg-primary-foreground hover:text-primary transition-colors"
+                  className="flex items-center p-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   <item.icon className="w-6 h-6" />
                   <span className={`ml-3 ${sidebarCollapsed ? "hidden" : "block"}`}>{item.label}</span>
@@ -63,9 +63,38 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <header className="bg-background border-b p-4 flex justify-between items-center">
           <h2 className="text-2xl font-semibold">Dashboard</h2>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-              {theme === "dark" ? <Sun /> : <Moon />}
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+                >
+                  {theme === "dark" ? (
+                    <Moon className="h-[1.2rem] w-[1.2rem]" />
+                  ) : theme === "light" ? (
+                    <Sun className="h-[1.2rem] w-[1.2rem]" />
+                  ) : (
+                    <Laptop className="h-[1.2rem] w-[1.2rem]" />
+                  )}
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setTheme("light")}>
+                  <Sun className="mr-2 h-4 w-4" />
+                  <span>Light</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                  <Moon className="mr-2 h-4 w-4" />
+                  <span>Dark</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>
+                  <Laptop className="mr-2 h-4 w-4" />
+                  <span>System</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">

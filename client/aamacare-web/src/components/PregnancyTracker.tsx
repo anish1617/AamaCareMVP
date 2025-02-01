@@ -1,7 +1,7 @@
 import type React from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-import { Progress } from "./ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const PregnancyTracker: React.FC = () => {
   return (

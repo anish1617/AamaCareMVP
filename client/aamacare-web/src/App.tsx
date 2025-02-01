@@ -10,7 +10,7 @@ import Profile from "./components/Profile"
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" enableSystem>
       <Router>
         <Layout>
           <Routes>
