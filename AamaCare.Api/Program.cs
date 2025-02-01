@@ -1,5 +1,6 @@
 using System.Reflection;
 using AamaCare.Api.Shared.ErrorHandling;
+using AamaCare.Application.Features.Mothers.CreateMother;
 using AamaCare.Application.Features.PregnancyTracker.CreatePregnancy;
 using AamaCare.Application.Shared.Interfaces;
 using AamaCare.Domain.Entities;
@@ -29,11 +30,12 @@ builder.Services.AddDbContext<AamaCareDbContext>(options =>
 });
 
 builder.Services.AddScoped(typeof(IGenericRepository<Pregnancy>), typeof(PregnancyRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<Mother>), typeof(MotherRepository));
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<CreatePregnancyValidator>();
-
+builder.Services.AddValidatorsFromAssemblyContaining<CreateMotherValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,5 +54,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AamaCareDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();

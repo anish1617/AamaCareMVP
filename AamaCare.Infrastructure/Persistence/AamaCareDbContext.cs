@@ -22,6 +22,24 @@ public class AamaCareDbContext :DbContext
         
     }
 
-    public DbSet<Pregnancy> Pregnancies { get; set; }
+    public DbSet<Mother> Mothers => Set<Mother>();
+    public DbSet<Pregnancy> Pregnancies => Set<Pregnancy>();
+    public DbSet<Baby> Babies => Set<Baby>();
+    public DbSet<CheckupReminder> CheckupReminders => Set<CheckupReminder>();
 
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Mother -> Pregnancy (1-to-Many)
+        modelBuilder.Entity<Mother>()
+            .HasMany(m => m.Pregnancies)
+            .WithOne(p => p.Mother)
+            .HasForeignKey(p => p.MotherId);
+
+        // Pregnancy -> Baby (1-to-1)
+        modelBuilder.Entity<Pregnancy>()
+            .HasOne(p => p.Baby)
+            .WithOne(b => b.Pregnancy)
+            .HasForeignKey<Baby>(b => b.PregnancyId);
+    }
 }

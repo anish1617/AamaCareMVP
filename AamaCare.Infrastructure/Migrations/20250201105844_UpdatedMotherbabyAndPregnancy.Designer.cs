@@ -4,6 +4,7 @@ using AamaCare.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AamaCare.Infrastructure.Migrations
 {
     [DbContext(typeof(AamaCareDbContext))]
-    partial class AamaCareDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250201105844_UpdatedMotherbabyAndPregnancy")]
+    partial class UpdatedMotherbabyAndPregnancy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
