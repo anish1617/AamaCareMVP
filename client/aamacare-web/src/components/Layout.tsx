@@ -44,7 +44,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         } transition-all duration-300 ease-in-out bg-card text-card-foreground p-4 border-r border-border`}
       >
         <div className="flex justify-between items-center mb-8">
-          <h1 className={`text-xl font-bold ${sidebarCollapsed ? "hidden" : "block"}`}>MomCare</h1>
+          <h1 className={`text-xl font-bold ${sidebarCollapsed ? "hidden" : "block"}`}>AamaCare</h1>
           <Button variant="ghost" size="icon" onClick={() => setSidebarCollapsed(!sidebarCollapsed)}>
             <Menu className="h-[1.2rem] w-[1.2rem]" />
           </Button>

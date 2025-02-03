@@ -10,7 +10,7 @@ import Notifications from "./components/Notifications"
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <NotificationProvider>
         <Router>
           <Layout>
