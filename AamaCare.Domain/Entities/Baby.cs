@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AamaCare.Domain.Shared;
+using AamaCare.Core.Shared;
 
-namespace AamaCare.Domain.Entities
+namespace AamaCare.Core.Entities
 {
     public class Baby : BaseEntity
     {
-        
-        public Guid PregnancyId { get; set; }
-        public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
-        public Pregnancy Pregnancy { get; set; }
+
+        public string Name { get; set; } = string.Empty;
+        public DateTime DateOfBirth { get; set; }
+        public string BloodGroup { get; set; } = string.Empty;
+        public decimal BirthWeight { get; set; }
+        public decimal BirthHeight { get; set; }
+        public string ParentContact { get; set; } = string.Empty;
+        public string PictureUrl { get; set; }
+        public ICollection<Vaccine> Vaccines { get; set; } = new List<Vaccine>();
+        public ICollection<HealthDocument> HealthDocuments { get; set; } = new List<HealthDocument>();
     }
 }

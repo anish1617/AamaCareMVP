@@ -1,4 +1,4 @@
-﻿using AamaCare.Domain.Entities;
+﻿using AamaCare.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -30,16 +30,13 @@ public class AamaCareDbContext :DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Mother -> Pregnancy (1-to-Many)
-        modelBuilder.Entity<Mother>()
-            .HasMany(m => m.Pregnancies)
-            .WithOne(p => p.Mother)
-            .HasForeignKey(p => p.MotherId);
-
-        // Pregnancy -> Baby (1-to-1)
-        modelBuilder.Entity<Pregnancy>()
-            .HasOne(p => p.Baby)
-            .WithOne(b => b.Pregnancy)
-            .HasForeignKey<Baby>(b => b.PregnancyId);
+        modelBuilder.Entity<Baby>(entity =>
+        {
+            entity.HasKey(b => b.Id);
+            entity.Property(b => b.Name).IsRequired().HasMaxLength(100);
+            entity.HasMany(b => b.Vaccines)
+                .WithOne(v => v.Baby)
+                .HasForeignKey(v => v.BabyId);
+        });
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AamaCare.Domain.Shared;
+﻿namespace AamaCare.Core.Shared;
 
 public class BaseEntity
 {

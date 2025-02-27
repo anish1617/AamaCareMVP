@@ -1,4 +1,4 @@
-﻿namespace AamaCare.Domain.Enums;
+﻿namespace AamaCare.Core.Enums;
 
 public enum PregnancyStatus
 {

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AamaCare.Domain\AamaCare.Domain.csproj" />
+    <ProjectReference Include="..\AamaCare.Core\AamaCare.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

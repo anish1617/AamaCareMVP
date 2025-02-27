@@ -1,5 +1,5 @@
 ﻿using AamaCare.Application.Shared.Interfaces;
-using AamaCare.Domain.Entities;
+using AamaCare.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AamaCare.Infrastructure.Persistence.Repositories
